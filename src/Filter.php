@@ -111,7 +111,7 @@ class Filter
             $func($value, $this->grid->getConfig()->getDataProvider());
             return;
         }
-        $isLike = $this->config->getOperator() === FilterConfig::OPERATOR_LIKE;
+        $isLike = in_array($this->config->getOperator(), [FilterConfig::OPERATOR_LIKE, FilterConfig::OPERATOR_ILIKE]);
         if ($isLike && strpos($value, '%') === false) {
             $value = "%$value%";
         }
